@@ -40,7 +40,7 @@ const KNOWN_DOMAINS = [
   
     for (const known of KNOWN_DOMAINS) {
       const distance = levenshtein(domain, known);
-      if (distance > 0 && distance <= 4) {
+      if (distance > 0 && distance <= 2) {
         matches.push({ domain: known, distance });
       }
     }
