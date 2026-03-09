@@ -1,6 +1,77 @@
 import { useState } from "react";
 import axios from "axios";
+import { PieChart, Pie, Cell } from "recharts";
 import "./App.css";
+
+const RADIAN = Math.PI / 180;
+
+function GaugeMeter({ score }) {
+  const width = 300;
+  const height = 180;
+  const cx = width / 2;
+  const cy = height - 20;
+  const iR = 90;
+  const oR = 120;
+
+  const segments = [
+    { value: 30, color: "#2ecc71" },
+    { value: 30, color: "#f39c12" },
+    { value: 40, color: "#e74c3c" },
+  ];
+
+  const needle = (value, cx, cy, iR, oR) => {
+    const angle = 180 - (value / 100) * 180;
+    const length = (iR + oR) / 2;
+    const sin = Math.sin(-RADIAN * angle);
+    const cos = Math.cos(-RADIAN * angle);
+    const r = 6;
+    const x0 = cx;
+    const y0 = cy;
+    const xba = x0 + r * sin;
+    const yba = y0 - r * cos;
+    const xbb = x0 - r * sin;
+    const ybb = y0 + r * cos;
+    const xp = x0 + length * cos;
+    const yp = y0 + length * sin;
+
+    return (
+      <g>
+        <circle cx={x0} cy={y0} r={r} fill="#fff" stroke="none" />
+        <path
+          d={`M${xba} ${yba} L${xbb} ${ybb} L${xp} ${yp} Z`}
+          fill="#fff"
+        />
+      </g>
+    );
+  };
+
+  return (
+    <PieChart width={width} height={height}>
+      <Pie
+        dataKey="value"
+        startAngle={180}
+        endAngle={0}
+        data={segments}
+        cx={cx}
+        cy={cy}
+        innerRadius={iR}
+        outerRadius={oR}
+        stroke="none"
+      >
+        {segments.map((entry, index) => (
+          <Cell key={index} fill={entry.color} />
+        ))}
+      </Pie>
+      {needle(score, cx, cy, iR, oR)}
+      <text x={cx} y={cy - 30} textAnchor="middle" fill="#4a90e2" fontSize={28} fontWeight="bold">
+        {score}
+      </text>
+      <text x={cx} y={cy - 10} textAnchor="middle" fill="#4a90e2" fontSize={12}>
+        / 100
+      </text>
+    </PieChart>
+  );
+}
 
 function App() {
   const [url, setUrl] = useState("");
@@ -53,14 +124,8 @@ function App() {
 
         {result && (
           <div className="result-card">
-            <div className="score-section">
-              <div
-                className="score-circle"
-                style={{ borderColor: getRiskColor(result.risk) }}
-              >
-                <span className="score-number">{result.score}</span>
-                <span className="score-label">/ 100</span>
-              </div>
+            <div className="gauge-section">
+              <GaugeMeter score={result.score} />
               <div
                 className="risk-badge"
                 style={{ backgroundColor: getRiskColor(result.risk) }}
@@ -68,6 +133,27 @@ function App() {
                 {result.risk}
               </div>
             </div>
+
+            {result.virusTotal && (
+              <div className="vt-stats">
+                <div className="vt-stat malicious">
+                  <span>{result.virusTotal.malicious}</span>
+                  <label>Malicious</label>
+                </div>
+                <div className="vt-stat suspicious">
+                  <span>{result.virusTotal.suspicious}</span>
+                  <label>Suspicious</label>
+                </div>
+                <div className="vt-stat harmless">
+                  <span>{result.virusTotal.harmless}</span>
+                  <label>Harmless</label>
+                </div>
+                <div className="vt-stat undetected">
+                  <span>{result.virusTotal.undetected}</span>
+                  <label>Undetected</label>
+                </div>
+              </div>
+            )}
 
             <div className="url-analyzed">
               <strong>Analyzed:</strong> {result.url}

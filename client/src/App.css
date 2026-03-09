@@ -86,40 +86,51 @@ button:disabled {
   border: 1px solid #2a2d3a;
 }
 
-.score-section {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  margin-bottom: 20px;
-}
-
-.score-circle {
-  width: 90px;
-  height: 90px;
-  border-radius: 50%;
-  border: 4px solid;
+.gauge-section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  margin-bottom: 20px;
 }
 
-.score-number {
-  font-size: 1.8rem;
+.risk-badge {
+  padding: 8px 24px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 1rem;
+  margin-top: 10px;
+}
+
+.vt-stats {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+  background-color: #252836;
+  border-radius: 10px;
+  padding: 16px;
+}
+
+.vt-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.vt-stat span {
+  font-size: 1.5rem;
   font-weight: bold;
 }
 
-.score-label {
+.vt-stat label {
   font-size: 0.75rem;
   color: #aaa;
 }
 
-.risk-badge {
-  padding: 8px 20px;
-  border-radius: 20px;
-  font-weight: bold;
-  font-size: 1rem;
-}
+.vt-stat.malicious span { color: #e74c3c; }
+.vt-stat.suspicious span { color: #f39c12; }
+.vt-stat.harmless span { color: #2ecc71; }
+.vt-stat.undetected span { color: #aaa; }
 
 .url-analyzed {
   font-size: 0.85rem;
