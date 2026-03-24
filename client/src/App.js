@@ -4,6 +4,7 @@ import EmailAnalyzer from "./components/EmailAnalyzer";
 import "./App.css";
 import IpChecker from "./components/IpChecker";
 import FileHashScanner from "./components/FileHashScanner";
+import WhoisLookup from "./components/WhoisLookup";
 
 const tabs = [
   { id: "url", label: "🔗 URL Scanner" },
@@ -22,6 +23,7 @@ function App() {
       case "email": return <EmailAnalyzer />;
       case "ip": return <IpChecker />;
       case "hash": return <FileHashScanner />;
+      case "whois": return <WhoisLookup />;
       default: return <p className="coming-soon">🚧 Coming soon...</p>;
     }
   };
