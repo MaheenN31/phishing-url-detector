@@ -2,6 +2,7 @@ import { useState } from "react";
 import UrlScanner from "./components/UrlScanner";
 import EmailAnalyzer from "./components/EmailAnalyzer";
 import "./App.css";
+import IpChecker from "./components/IpChecker";
 
 const tabs = [
   { id: "url", label: "🔗 URL Scanner" },
@@ -18,6 +19,7 @@ function App() {
     switch (activeTab) {
       case "url": return <UrlScanner />;
       case "email": return <EmailAnalyzer />;
+      case "ip": return <IpChecker />;
       default: return <p className="coming-soon">🚧 Coming soon...</p>;
     }
   };

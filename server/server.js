@@ -3,6 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const analyzeRoute = require('./routes/analyze');
 const emailRoute = require('./routes/email');
+const ipRoute = require('./routes/ip');
 
 const app = express();
 const PORT = 5000;
@@ -12,6 +13,7 @@ app.use(express.json());
 
 app.use('/analyze', analyzeRoute);
 app.use('/email', emailRoute);
+app.use('/ip', ipRoute);
 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
