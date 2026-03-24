@@ -20,11 +20,11 @@ body {
 
 .container {
   width: 100%;
-  max-width: 700px;
+  max-width: 750px;
 }
 
 h1 {
-  font-size: 2rem;
+  font-size: 2.2rem;
   margin-bottom: 8px;
 }
 
@@ -33,23 +33,66 @@ h1 {
   margin-bottom: 30px;
 }
 
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 30px;
+}
+
+.tab-btn {
+  padding: 10px 18px;
+  border-radius: 8px;
+  border: 1px solid #333;
+  background-color: #1a1d27;
+  color: #aaa;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.tab-btn:hover {
+  border-color: #4a90e2;
+  color: #fff;
+}
+
+.tab-btn.active {
+  background-color: #4a90e2;
+  border-color: #4a90e2;
+  color: #fff;
+}
+
+.tab-content {
+  background-color: #1a1d27;
+  border-radius: 12px;
+  padding: 30px;
+  border: 1px solid #2a2d3a;
+}
+
+.tool-description {
+  color: #aaa;
+  margin-bottom: 20px;
+  font-size: 0.95rem;
+}
+
 .input-section {
   display: flex;
   gap: 10px;
   margin-bottom: 20px;
 }
 
-input {
+input, textarea {
   flex: 1;
   padding: 14px 16px;
   border-radius: 8px;
   border: 1px solid #333;
-  background-color: #1a1d27;
+  background-color: #0f1117;
   color: #fff;
   font-size: 0.95rem;
+  font-family: 'Segoe UI', sans-serif;
 }
 
-input:focus {
+input:focus, textarea:focus {
   outline: none;
   border-color: #4a90e2;
 }
@@ -80,10 +123,7 @@ button:disabled {
 }
 
 .result-card {
-  background-color: #1a1d27;
-  border-radius: 12px;
-  padding: 30px;
-  border: 1px solid #2a2d3a;
+  margin-top: 20px;
 }
 
 .gauge-section {
@@ -161,4 +201,53 @@ button:disabled {
 
 .no-issues {
   color: #2ecc71;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.info-item {
+  background-color: #252836;
+  padding: 12px 16px;
+  border-radius: 8px;
+}
+
+.info-item label {
+  font-size: 0.75rem;
+  color: #aaa;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.info-item span {
+  font-size: 0.95rem;
+  font-weight: bold;
+  word-break: break-all;
+}
+
+.coming-soon {
+  color: #aaa;
+  text-align: center;
+  padding: 40px 0;
+  font-size: 1.1rem;
+}
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.tag {
+  background-color: #1a1d27;
+  border: 1px solid #333;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  color: #aaa;
 }
