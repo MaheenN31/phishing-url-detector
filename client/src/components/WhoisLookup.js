@@ -102,7 +102,7 @@ function WhoisLookup() {
           <div className="reasons-section">
             <h3>⚠️ Risk Analysis</h3>
             {result.reasons.length === 0 ? (
-              <p className="no-issues">✅ No suspicious indicators found.</p>
+              <p className="no-issues">No suspicious indicators found.</p>
             ) : (
               <ul>
                 {result.reasons.map((reason, index) => (

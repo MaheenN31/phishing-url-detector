@@ -7,11 +7,11 @@ import FileHashScanner from "./components/FileHashScanner";
 import WhoisLookup from "./components/WhoisLookup";
 
 const tabs = [
-  { id: "url", label: "🔗 URL Scanner" },
-  { id: "email", label: "📧 Email Analyzer" },
-  { id: "ip", label: "🌐 IP Checker" },
-  { id: "hash", label: "📁 File Hash" },
-  { id: "whois", label: "🕵️ WHOIS Lookup" },
+  { id: "url", label: "URL Scanner" },
+  { id: "email", label: "Email Analyzer" },
+  { id: "ip", label: "IP Checker" },
+  { id: "hash", label: "File Hash" },
+  { id: "whois", label: "WHOIS Lookup" },
 ];
 
 function App() {
@@ -31,7 +31,7 @@ function App() {
   return (
     <div className="app">
       <div className="container">
-        <h1>🛡️ CyberShield</h1>
+        <h1>CyberShield</h1>
         <p className="subtitle">Your all-in-one cybersecurity analysis toolkit</p>
 
         <div className="tabs">
