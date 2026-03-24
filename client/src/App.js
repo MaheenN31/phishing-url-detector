@@ -3,6 +3,7 @@ import UrlScanner from "./components/UrlScanner";
 import EmailAnalyzer from "./components/EmailAnalyzer";
 import "./App.css";
 import IpChecker from "./components/IpChecker";
+import FileHashScanner from "./components/FileHashScanner";
 
 const tabs = [
   { id: "url", label: "🔗 URL Scanner" },
@@ -20,6 +21,7 @@ function App() {
       case "url": return <UrlScanner />;
       case "email": return <EmailAnalyzer />;
       case "ip": return <IpChecker />;
+      case "hash": return <FileHashScanner />;
       default: return <p className="coming-soon">🚧 Coming soon...</p>;
     }
   };
